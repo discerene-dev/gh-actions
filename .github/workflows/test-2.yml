@@ -1,0 +1,17 @@
+name: test2
+
+on:
+  push:
+    paths:
+      - ".github/workflows/api-build.yml"
+      - "api/**"
+  workflow_dispatch: # manual
+
+jobs:
+  build:
+    name: build npm 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npn init -y
+      - run: npm install express
