@@ -1,0 +1,19 @@
+name: test2
+
+on:
+  push:
+    paths:
+      - ".github/workflows/python-project-1.yml"
+      - "python-project-1/**"
+  workflow_dispatch: # manual
+
+jobs:
+  build:
+    name: run unit tests 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests
+          working-directory: ./python-project-1
