@@ -5,6 +5,8 @@ name: test
 # trigger
 on:
   push:
+  schedule:
+    - cron: "*/5 * * * *"
 
 # command line scripts
 jobs:
