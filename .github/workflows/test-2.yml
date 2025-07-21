@@ -3,7 +3,7 @@ name: test2
 on:
   push:
     paths:
-      - ".github/workflows/api-build.yml"
+      - ".github/workflows/test-2.yml"
       - "api/**"
   workflow_dispatch: # manual
 
