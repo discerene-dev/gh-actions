@@ -1,0 +1,10 @@
+# Node.js dependencies
+node_modules/
+
+package-lock.json
+
+# Runtime files
+*.pid
+
+# Log files
+*log*
