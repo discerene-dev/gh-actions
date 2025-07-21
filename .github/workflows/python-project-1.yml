@@ -16,4 +16,4 @@ jobs:
         with: 
           python-version: '3.12'
       - run: python -m unittest discover -s tests
-          working-directory: ./python-project-1
+          working-directory: python-project-1
