@@ -7,6 +7,7 @@ on:
   push:
   schedule:
     - cron: "*/5 * * * *"
+  workflow_dispatch: #manual trigger
 
 # command line scripts
 jobs:
