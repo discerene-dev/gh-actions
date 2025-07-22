@@ -1,4 +1,4 @@
-name: test2
+name: python-project-1.yml
 
 on:
   push:
