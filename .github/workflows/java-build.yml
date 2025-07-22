@@ -18,6 +18,9 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
       - run: java --version
-      - run: java HelloWorld.java
+      - run: javac HelloWorld.java
         working-directory: ./java-test-project
+      - run: java HelloWorld
+        working-directory: ./java-test-project
+      
       
