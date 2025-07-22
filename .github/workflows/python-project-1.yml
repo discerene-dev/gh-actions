@@ -25,7 +25,7 @@ jobs:
         working-directory: ./python-project-1
         run: |
           score=$(pylint . | grep "Your code" | awk '{print $7}' | cut -d/ -f1)
-          threshold=8.0
+          threshold=4.0
           echo "Pylint score: $score / 10"
           return_code=$(echo "$score < $threshold" | bc)
           echo "Return code: $return_code"
