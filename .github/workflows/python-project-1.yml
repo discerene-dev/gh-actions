@@ -27,6 +27,6 @@ jobs:
           score=$(pylint . | grep "Your code" | awk '{print $7}' | cut -d/ -f1)
           threshold=8.0
           echo "Pylint score: $score / 10"
-          return_code=$(echo "$score < $treshold" | bc)
+          return_code=$(echo "$score < $threshold" | bc)
           echo "Return code: $return_code"
           exit $return_code
