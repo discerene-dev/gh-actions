@@ -6,7 +6,12 @@ on:
       - ".github/workflows/python-project-1.yml"
       - "python-project-1/**"
     branches: [dev]
-  workflow_dispatch: # manual
+  pull_request:
+    branches: [main]
+    paths:
+      - "python-project-1/**"
+  workflow_dispatch:
+    
 
 jobs:
   build:
