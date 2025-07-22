@@ -5,15 +5,27 @@ on:
     paths:
       - ".github/workflows/python-project-1.yml"
       - "python-project-1/**"
+    branches: [dev]
   workflow_dispatch: # manual
 
 jobs:
   build:
-    name: run unit tests 
+    name: run tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: 
           python-version: '3.12'
-      - run: python -m unittest discover -s tests
+      - name: Install dependencies
+        run: pip install pylint
+      - name: Run Unit Tests
+        run: python -m unittest discover -s tests
         working-directory: ./python-project-1
+      - name: Run Pylinkt
+        working-directory: ./python-project-1
+        run: |
+          score=$(pylint . | grep "Your code" | awk '{print $7}' | cut -d/ -f1)
+          threshold=8.0
+          echo "Pylint score: $score / 10"
+          return_code=$(echo "$score < $treshold" | bc)
+          exit $return_code
