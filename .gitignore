@@ -8,3 +8,6 @@ package-lock.json
 
 # Log files
 *log*
+
+# java compiled classes
+*.class
