@@ -1,7 +1,15 @@
-name: new-build
+name: java-build
 
 on:
   push:
     paths:
-      - ".github/workflows/upper-build.yml"
-      - "
+      - ".github/workflows/java-build.yml"
+      - "java-test-project/**"
+  workflow_dispatch: # manual
+
+jobs:
+  compile:
+    name: compile-java
+    runs-on: ubuntu-latest
+    steps:
+      - run: java --version
