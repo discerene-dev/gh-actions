@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 class TestAdd(unittest.TestCase):
     def test_add_1(self):
-        self.assertEqual(addition(1,1),2)
+        self.assertEqual(addition(1,1),3)
 
     def test_add_2(self):
         self.assertEqual(addition(2,2),4)
