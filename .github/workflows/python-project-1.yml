@@ -22,7 +22,7 @@ jobs:
         with: 
           python-version: '3.12'
       - name: Install dependencies
-        run: pip install pylint
+        run: pip install pylint isort
       - name: Run Unit Tests
         run: python -m unittest discover -s tests
         working-directory: ./python-project-1
@@ -35,3 +35,6 @@ jobs:
           return_code=$(echo "$score < $threshold" | bc)
           echo "Return code: $return_code"
           exit $return_code
+      - name: Run isort
+        working-directory: ./python-project-1
+        run: isort .

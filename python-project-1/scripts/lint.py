@@ -1,4 +1,5 @@
-import sys # unused function
+import sys  # unused function
+
 
 def unusued_func(x):
     print(x)
