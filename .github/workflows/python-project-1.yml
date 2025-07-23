@@ -5,15 +5,36 @@ on:
     paths:
       - ".github/workflows/python-project-1.yml"
       - "python-project-1/**"
-  workflow_dispatch: # manual
+    branches: [dev]
+  pull_request:
+    branches: [main]
+    paths:
+      - "python-project-1/**"
+  workflow_dispatch:
+    
 
 jobs:
   build:
-    name: run unit tests 
+    name: run tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: 
           python-version: '3.12'
-      - run: python -m unittest discover -s tests
+      - name: Install dependencies
+        run: pip install pylint isort
+      - name: Run Unit Tests
+        run: python -m unittest discover -s tests
         working-directory: ./python-project-1
+      - name: Run Pylint
+        working-directory: ./python-project-1
+        run: |
+          score=$(pylint . | grep "Your code" | awk '{print $7}' | cut -d/ -f1)
+          threshold=4.0
+          echo "Pylint score: $score / 10"
+          return_code=$(echo "$score < $threshold" | bc)
+          echo "Return code: $return_code"
+          exit $return_code
+      - name: Run isort
+        working-directory: ./python-project-1
+        run: isort .
